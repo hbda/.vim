@@ -171,7 +171,7 @@ if has("mac")
   " download Monaco for Powerline.otf from https://gist.github.com/baopham/1838072
   set guifont=Monaco\ for\ Powerline:h14
 elseif has("gui_gtk2")
-  set guifont=Monaco\ 12
+  set guifont=Monaco\ for\ Powerline\ 12
 else
   set guifont=Monaco:h10
 endif
