@@ -282,6 +282,8 @@ else
   set runtimepath+=~/vimfiles/vim-ruby
   set runtimepath+=~/vimfiles/vim-rails
 endif
+
+set guioptions-=m
 "-----------------------------------------------------------------------------
 " hotkeys
 "-----------------------------------------------------------------------------
@@ -582,6 +584,9 @@ map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<cr>
 "map <A-\> :vsplit<cr>:exec("tag ".expand("<cword>"))<cr><c-W>r
 " NERDCommenter
 map ,<space> <plug>NERDCommenterToggle
+
+" Toggle main menu
+nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 "-----------------------------------------------------------------------------
 " menu
 "-----------------------------------------------------------------------------
