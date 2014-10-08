@@ -43,6 +43,9 @@ git_bundles = [
   #'git://github.com/gregsexton/gitv',
 ]
 
+# https://langui.sh/2014/03/10/wunused-command-line-argument-hard-error-in-future-is-a-harsh-mistress
+%x{export ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"}
+
 git_keep = []
 
 bundles_dir = File.join(File.dirname(__FILE__), 'bundle')
