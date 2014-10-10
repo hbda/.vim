@@ -499,8 +499,8 @@ map <silent> <leader>N :NERDTreeFind<cr>
 nmap <f1> :CommandT<cr>
 nmap ,<f1>r :CommandTFlush<cr>:CommandT<cr>
 
-"nmap <f2> :NERDTreeToggle<cr>
-nmap <f2> :NERDTreeFind<cr>
+nmap <f2> :NERDTreeToggle<cr>
+"nmap <f2> :NERDTreeFind<cr>
 "nmap ,<f2> :NERDTree<cr>
 
 nmap <f3> :BuffergatorToggle<cr>
