@@ -1,18 +1,11 @@
 "-----------------------------------------------------------------------------
-"  Buffergator
-"-----------------------------------------------------------------------------
-let g:buffergator_suppress_keymaps = 1
-nnoremap <silent> <Leader>b :BuffergatorOpen<CR>
-nnoremap <silent> <Leader>B :BuffergatorClose<CR>
-"nnoremap <silent> <Leader>t :BuffergatorTabsOpen<CR>
-"nnoremap <silent> <Leader>T :BuffergatorTabsClose<CR>
-"-----------------------------------------------------------------------------
 " pathogen
 "-----------------------------------------------------------------------------
 filetype off
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 filetype on
+
 "-----------------------------------------------------------------------------
 " fugitive
 "-----------------------------------------------------------------------------
@@ -22,6 +15,12 @@ autocmd User fugitive
   \ endif
 autocmd BufReadPost fugitive://* set bufhidden=delete
 set diffopt+=vertical
+
+"-----------------------------------------------------------------------------
+" supertab
+"-----------------------------------------------------------------------------
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
 "-----------------------------------------------------------------------------
 " sytanstic
 "-----------------------------------------------------------------------------
@@ -33,15 +32,18 @@ let g:syntastic_json_checkers=['jsonlint'] " npm install -g jsonlint
 let g:vim_json_syntax_conceal = 0
 "let g:syntastic_enable_signs=1
 "let g:syntastic_auto_loc_list=1
+
 "-----------------------------------------------------------------------------
 " matchit
 "-----------------------------------------------------------------------------
 runtime macros/matchit.vim
+
 "-----------------------------------------------------------------------------
 " powerline
 "-----------------------------------------------------------------------------
 let g:airline_powerline_fonts = 1
 set laststatus=2
+
 "-----------------------------------------------------------------------------
 " Command-T
 "-----------------------------------------------------------------------------
@@ -53,9 +55,11 @@ let g:CommandTWildIgnore = &wildignore."*.o,*.obj,.git,.svn,*.log,public/uploads
 nmap <silent> <leader>t :CommandT<cr>
 nmap <silent> <leader>r :CommandTFlush<cr>:CommandT<cr>
 nmap <silent> <leader>j :CommandTJump<CR>
-"-----------------------------------------------------------------------------
+
+nmap <f1> :CommandT<cr>
+nmap ,<f1>r :CommandTFlush<cr>:CommandT<cr>
+
 " буферы закрываем всегда
-"-----------------------------------------------------------------------------
 "function! s:set_bufhidden()
   "if empty(&buftype)
     "setlocal bufhidden=wipe
@@ -63,6 +67,54 @@ nmap <silent> <leader>j :CommandTJump<CR>
 "endfunction
 
 "autocmd! BufRead * call s:set_bufhidden()
+
+"-----------------------------------------------------------------------------
+" LustyExplorer
+"-----------------------------------------------------------------------------
+nmap <silent> <leader>l :LustyBufferGrep<cr>
+nmap <f4> :LustyBufferGrep<cr>
+
+silent! unmap <leader>lf
+silent! unmap <leader>lr
+silent! unmap <leader>lb
+silent! unmap <leader>lg
+silent! unmap <leader>lj
+
+"-----------------------------------------------------------------------------
+" NerdTree
+"-----------------------------------------------------------------------------
+map <silent> <leader>n :NERDTreeToggle<cr>
+map <silent> <leader>N :NERDTreeFind<cr>
+nmap <f2> :NERDTreeFind<cr>
+
+"-----------------------------------------------------------------------------
+"  Buffergator
+"-----------------------------------------------------------------------------
+let g:buffergator_suppress_keymaps = 1
+nnoremap <silent> <Leader>b :BuffergatorOpen<CR>
+nnoremap <silent> <Leader>B :BuffergatorClose<CR>
+"nnoremap <silent> <Leader>t :BuffergatorTabsOpen<CR>
+"nnoremap <silent> <Leader>T :BuffergatorTabsClose<CR>
+nmap <f3> :BuffergatorToggle<cr>
+
+nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
+nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
+
+"-----------------------------------------------------------------------------
+" Ag
+"-----------------------------------------------------------------------------
+let g:ag_search_ignore = 'log,public,tmp,spec/vcr_cassettes'
+let g:ag_prg="ag --nogroup --nocolor --column "
+let g:ag_qhandler="copen 25"
+map <Leader>/ <esc>:call AgSearch()<cr>
+
+function! AgSearch()
+  let l:search_phrase=input('Search phrase: ')
+  redraw
+  echo "Ack Searching..."
+  silent execute ':Ag --ignore-dir={'.g:ag_search_ignore.'} '.l:search_phrase
+endfunction
+
 "-----------------------------------------------------------------------------
 " options
 "-----------------------------------------------------------------------------
@@ -131,7 +183,7 @@ endif
 set number " always show line numbers
 set guioptions-=T
 set ch=1
-set noguipty
+" set noguipty
 set nostartofline
 set whichwrap+=>
 set whichwrap+=<
@@ -160,8 +212,8 @@ set noerrorbells
 set cpoptions+=$
 "set nocp " option for cppomnicomplete
 set list
-"set listchars=trail:.
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set listchars=tab:>·,trail:·,precedes:#,extends:#,nbsp:·
+
 " allow to use backspace instead of "x"
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 " do not abandon buffer when it is unloaded
@@ -313,21 +365,9 @@ vmap <silent>* <esc>:call VisualSearch('/')<cr>/<c-R>/<cr>
 vmap <silent># <esc>:call VisualSearch('?')<cr>?<c-R>/<cr>
 " Trailing Spaces
 nmap <silent>,t :call RemoveTrailingSpaces()<cr>:echo 'trailing spaces have been removed'<cr>
-" NerdTree
-map <silent> <leader>n :NERDTreeToggle<cr>
-map <silent> <leader>N :NERDTreeFind<cr>
 
-nmap <f1> :CommandT<cr>
-nmap ,<f1>r :CommandTFlush<cr>:CommandT<cr>
-
-nmap <f2> :NERDTreeToggle<cr>
-"nmap <f2> :NERDTreeFind<cr>
-"nmap ,<f2> :NERDTree<cr>
-
-nmap <f3> :BuffergatorToggle<cr>
-
-let g:speckySpecSwitcherKey="<f4>"
-nmap gs <c-w><c-v><c-w>l<f4>
+let g:speckySpecSwitcherKey="<f12>"
+nmap gs <c-w><c-v><c-w>l<f12>
 " Git
 nnoremap <f5> :Gcommit<cr>
 inoremap <f5> <c-O>:Gcommit<cr>
@@ -337,12 +377,12 @@ nnoremap <f6> :Gdiff<cr>
 inoremap <f6> <c-O>:Gdiff<cr>
 vnoremap <f6> <esc>:Gdiff<cr>
 " Tags
-nnoremap <f10> :TagbarToggle<cr>
-inoremap <f10> <c-O>:TagbarToggle<cr>
-vnoremap <f10> <esc>:TagbarToggle<cr>
-nnoremap <f12> :emenu Tags.<tab>
-inoremap <f12> <c-O>:emenu Tags.<tab>
-vnoremap <f12> <esc>:emenu Tags.<tab>
+"nnoremap <f10> :TagbarToggle<cr>
+"inoremap <f10> <c-O>:TagbarToggle<cr>
+"vnoremap <f10> <esc>:TagbarToggle<cr>
+"nnoremap <f12> :emenu Tags.<tab>
+"inoremap <f12> <c-O>:emenu Tags.<tab>
+"vnoremap <f12> <esc>:emenu Tags.<tab>
 " ruby debugger
 " vimrc edit
 if exists('$MYGVIMRC')
@@ -356,11 +396,6 @@ end
 imap {<cr> {<cr>}<Esc>O
 imap <% <%  %><left><left><left>
 imap <%= <%= %><left><left><left>
-
-map <Leader>f :call GrepIt()<cr>
-" quotes replacement
-nnoremap <silent><leader>'  :<C-U>call <SID>ToggleQuote()<CR>
-nnoremap <silent><leader>"  :<C-U>call <SID>ToggleDoubleQuote()<CR>
 
 map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<cr>
 " NERDCommenter
@@ -397,33 +432,9 @@ anoremenu &File.&Spell.&Russian :setlocal spell spelllang=ru<cr>
 anoremenu &File.&Spell.&English :setlocal spell spelllang=en<cr>
 anoremenu &File.&Spell.&Off :setlocal nospell spelllang=<cr>
 
-anoremenu &File.&Preview.&Firefox :!firefox %<cr>
-anoremenu &File.&Preview.&Opera :!opera %<cr>
-anoremenu &File.&Preview.&Midori :!midori %<cr>
-
-" tag list
-anoremenu &Tags.&Tagbar :TagbarToggle<cr>
-anoremenu &Tags.&TagList :TlistToggle<cr>
-anoremenu &Tags.&ctags :exec("!ctags -R --fields=+zitKSla --extra=+q --exclude=.svn --exclude=fckeditor --exclude=editor --exclude=ckeditor --exclude=ckfinder --exclude=suilib_packed.js --exclude=jquery-1.3.2.min.js --exclude=jquery.plugins.js --exclude=highslide.packed.js --exclude=sui.js --exclude=codemirror --exclude=jTweener.js --exclude=swfobject.js --exclude=community_map.packed.js --exclude=order_base.packed.js --exclude=special_header.packed.js --exclude=prototype-1.4.0.js --exclude=raphael-min.js  --exclude=frontend.js --exclude=packed.js .")<cr>
-if has("unix")
-  anoremenu &Tags.&rjstags :exec("!ruby ~/.vim/bin/rjstags/rjstags.rb .")<cr>
-  anoremenu &Tags.&rjstags\ file :exec("!ruby ~/.vim/bin/rjstags/rjstags.rb %")<cr>
-else
-  anoremenu &Tags.&rjstags :exec("!ruby '".$HOME."//vimfiles//bin//rjstags//rjstags.rb' .")<cr>
-  anoremenu &Tags.&rjstags\ file :exec("!ruby '".$HOME."//vimfiles//bin//rjstags//rjstags.rb' %")<cr>
-endif
 "-----------------------------------------------------------------------------
 " autocommands
 "-----------------------------------------------------------------------------
-"nmap <LocalLeader>k :exec("!lynx -accept_all_cookies http://php.net/".expand("<cword>"))<cr>
-"command! -nargs=0 RDocPreview call RDocRenderBufferToPreview()
-
-"function! RDocRenderBufferToPreview()
-"  let rdocoutput = "/tmp/vimrdoc/"
-"  call system("rdoc " . bufname("%") . " --op " . rdocoutput)
-"  call system("open -a Safari ". rdocoutput . "index.html")
-"endfunction
-
 " backups
 autocmd! bufwritepre * call BackupDir()
 " reload vimrc
@@ -441,40 +452,12 @@ else
 endif
 
 au BufRead,BufNewFile *.scss set filetype=scss
-"au BufNewFile,BufRead *.scss set filetype=css
 au BufNewFile,BufRead *.json set filetype=javascript
 au BufNewFile,BufRead *.slim set filetype=slim
 au BufNewFile,BufRead *.json set filetype=json
 
-" coffeescript
-"au BufWritePost *.coffee silent make! -b | cwindow | redraw!
-"au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
-"au BufWritePost *.coffee silent exec('!rm '.substitute(shellescape(expand('%')), '.coffee', '.js', '').' > /dev/null 2>&1')
-"au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
-
-au BufNewFile,BufRead *.ctp set filetype=phtml
-au BufNewFile,BufRead *.php,*.phtml set dict+=~/.vimdata/php/keywords
-
-"au BufNewFile,BufRead *.rb map <s-k> :call TryRubyDoc()<cr>
-"if has("unix")
-  "au BufNewFile,BufRead *.rb map <f9> <esc>:w<cr>:!./%<cr>
-"else
-  "au BufNewFile,BufRead *.rb map <f9> <esc>:w<cr>:!%<cr>
-"endif
-
+"au BufNewFile,BufRead *.rb set makeprg=ruby\ -c\ %
 au BufRead,BufNewFile *_spec.rb set filetype=rspec
-
-au BufNewFile,BufRead *.rb set makeprg=ruby\ -c\ %
-"au BufNewFile,BufRead *.rb nnoremap <c-f12> :Rtags<cr>
-"au BufNewFile,BufRead *.rb nnoremap <c-f12> :!rake mactag<cr>
-
-" Run Ruby unit tests with rT (for all) or rt (only test under cursor) in command mode
-"autocmd BufRead,BufNewFile *.rb :nmap rt :<C-U>w<CR>:!rake test:units TEST=%<CR>
-"autocmd BufRead,BufNewFile *.rb :nmap rT :<C-U>w<CR>:!rake test<CR>
-
-"au BufNewFile,BufRead *.cpp map <c-f12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
-"au BufNewFile,BufRead *.cpp,*.h set tags+=~/.vimdata/c++/unix/std/tags
-
 au BufNewFile,BufRead *.ass,*.ssa set filetype=ssa
 "-----------------------------------------------------------------------------
 " omni completion
@@ -490,12 +473,6 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 "-----------------------------------------------------------------------------
 " functions
 "-----------------------------------------------------------------------------
-function! GrepIt()
-  let l:word = expand("<cword>")
-  echo 'Searching for "'.l:word.'"...'
-  exec('Grep '.l:word.' **/*')
-endfunction
-
 function! VisualSearch(cmd)
   let l:old_reg=getreg('"')
   let l:old_regtype=getregtype('"')
@@ -507,8 +484,6 @@ endfunction
 
 function! RemoveTrailingSpaces()
   normal! mzHmy
-"  execute '%s/^        /  /ge'
-"  execute '%s/ /  /ge'
   execute '%s/\t/  /ge'
   execute '%s/\s\+$//ge'
   normal! 'yzt`z
@@ -552,121 +527,6 @@ function! InsertTabLineWrapper()
  endif
 endfunction
 
-function! InsertSnippetWrapper()
- let inserted = TriggerSnippet()
- if inserted == "\<tab>"
-   return ";"
- else
-   return inserted
- endif
-endfunction
-
-autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
-
-"return '[\s]' if trailing white space is detected
-"return '' otherwise
-function! StatuslineTrailingSpaceWarning()
-    if !exists("b:statusline_trailing_space_warning")
-        if search('\s\+$', 'nw') != 0
-            let b:statusline_trailing_space_warning = '[\s]'
-        else
-            let b:statusline_trailing_space_warning = ''
-        endif
-    endif
-    return b:statusline_trailing_space_warning
-endfunction
-
-
-"return the syntax highlight group under the cursor ''
-function! StatuslineCurrentHighlight()
-    let name = synIDattr(synID(line('.'),col('.'),1),'name')
-    if name == ''
-        return ''
-    else
-        return '[' . name . ']'
-    endif
-endfunction
-
-"recalculate the tab warning flag when idle and after writing
-autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
-
-"return '[&et]' if &et is set wrong
-"return '[mixed-indenting]' if spaces and tabs are used to indent
-"return an empty string if everything is fine
-function! StatuslineTabWarning()
-    if !exists("b:statusline_tab_warning")
-        let tabs = search('^\t', 'nw') != 0
-        let spaces = search('^ ', 'nw') != 0
-
-        if tabs && spaces
-            let b:statusline_tab_warning =  '[mixed-indenting]'
-        elseif (spaces && !&et) || (tabs && &et)
-            let b:statusline_tab_warning = '[&et]'
-        else
-            let b:statusline_tab_warning = ''
-        endif
-    endif
-    return b:statusline_tab_warning
-endfunction
-
-"recalculate the long line warning when idle and after saving
-autocmd cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
-
-"return a warning for "long lines" where "long" is either &textwidth or 80 (if
-"no &textwidth is set)
-"
-"return '' if no long lines
-"return '[#x,my,$z] if long lines are found, were x is the number of long
-"lines, y is the median length of the long lines and z is the length of the
-"longest line
-function! StatuslineLongLineWarning()
-    if !exists("b:statusline_long_line_warning")
-        let long_line_lens = s:LongLines()
-
-        if len(long_line_lens) > 0
-            let b:statusline_long_line_warning = "[" .
-                        \ '#' . len(long_line_lens) . "," .
-                        \ 'm' . s:Median(long_line_lens) . "," .
-                        \ '$' . max(long_line_lens) . "]"
-        else
-            let b:statusline_long_line_warning = ""
-        endif
-    endif
-    return b:statusline_long_line_warning
-endfunction
-
-"return a list containing the lengths of the long lines in this buffer
-function! s:LongLines()
-    let threshold = (&tw ? &tw : 80)
-    let spaces = repeat(" ", &ts)
-
-    let long_line_lens = []
-
-    let i = 1
-    while i <= line("$")
-        let len = strlen(substitute(getline(i), '\t', spaces, 'g'))
-        if len > threshold
-            call add(long_line_lens, len)
-        endif
-        let i += 1
-    endwhile
-
-    return long_line_lens
-endfunction
-
-"find the median of the given array of numbers
-function! s:Median(nums)
-    let nums = sort(a:nums)
-    let l = len(nums)
-
-    if l % 2 == 1
-        let i = (l-1) / 2
-        return nums[i]
-    else
-        return (nums[l/2] + nums[(l/2)-1]) / 2
-    endif
-endfunction
-
 "visual search mappings
 function! s:VSetSearch()
     let temp = @@
@@ -676,7 +536,6 @@ function! s:VSetSearch()
 endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
-
 
 "jump to last cursor position when opening a file
 "dont do it when writing a commit log entry
@@ -688,46 +547,6 @@ function! SetCursorPosition()
             normal! zz
         endif
     end
-endfunction
-
-"define :HighlightLongLines command to highlight the offending parts of
-"lines that are longer than the specified length (defaulting to 80)
-command! -nargs=? HighlightLongLines call s:HighlightLongLines('<args>')
-function! s:HighlightLongLines(width)
-    let targetWidth = a:width != '' ? a:width : 79
-    if targetWidth > 0
-        exec 'match Todo /\%>' . (targetWidth) . 'v/'
-    else
-        echomsg "Usage: HighlightLongLines [natural number]"
-    endif
-endfunction
-
-" replacement for quotes
-function! s:ToggleQuote()
-    let q = searchpos("'", 'n', line('.'))
-    let qb = searchpos("'", 'bn', line('.'))
-    let dq = searchpos('"', 'n', line('.'))
-    let dqb = searchpos('"', 'bn', line('.'))
-
-    if q[0] > 0 && qb[0] > 0 && (dq[0] == 0 || dq[0] > q[0])
-        execute "normal mzcs'\"`z"
-    elseif dq[0] > 0 && dqb[0] > 0
-        execute "normal mzcs\"'`z"
-    endif
-endfunction
-
-" replacement for double quotes
-function! s:ToggleDoubleQuote()
-    let q = searchpos('"', 'n', line('.'))
-    let qb = searchpos('"', 'bn', line('.'))
-    let dq = searchpos("'", 'n', line('.'))
-    let dqb = searchpos("'", 'bn', line('.'))
-
-    if q[0] > 0 && qb[0] > 0 && (dq[0] == 0 || dq[0] > q[0])
-        execute "normal mzcs\"'`z"
-    elseif dq[0] > 0 && dqb[0] > 0
-        execute "normal mzcs'\"`z"
-    endif
 endfunction
 
 "-----------------------------------------------------------------------------
@@ -746,10 +565,10 @@ let g:rubycomplete_rails = 1
 let g:SessionMgr_AutoManage = 0
 let g:SessionMgr_DefaultName = "last"
 " Tlist settings
-let g:Tlist_Show_One_File = 1
-let g:Tlist_GainFocus_On_ToggleOpen = 1
-let g:Tlist_Use_Right_Window = 1
-let g:Tlist_WinWidth = 45
+"let g:Tlist_Show_One_File = 1
+"let g:Tlist_GainFocus_On_ToggleOpen = 1
+"let g:Tlist_Use_Right_Window = 1
+"let g:Tlist_WinWidth = 45
 
 set completeopt-=preview
 set completeopt+=longest
