@@ -261,6 +261,8 @@ vnoremap <S-Del> "+x
 vnoremap <c-c> "+y
 vnoremap <c-insert> "+y
 
+inoremap <C-c> <Esc>
+
 " CTRL-V and SHIFT-Insert are Paste
 "map <c-v>     "+gP
 map <s-insert>    "+gP
