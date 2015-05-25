@@ -13,7 +13,6 @@ git_bundles = %w[
   elzr/vim-json
   jeetsukumaran/vim-buffergator
   kchmck/vim-coffee-script
-  saks/Specky
   scrooloose/nerdcommenter
   scrooloose/nerdtree
   scrooloose/syntastic
@@ -29,6 +28,7 @@ git_bundles = %w[
   vim-scripts/grep.vim
   sjbach/lusty
   rking/ag.vim
+  kshenoy/vim-signature
 ]
 #vim-scripts/vimgrep.vim
 #majutsushi/tagbar

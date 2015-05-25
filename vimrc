@@ -116,6 +116,31 @@ function! AgSearch()
   silent execute ':Ag --ignore-dir={'.g:ag_search_ignore.'} '.l:search_phrase
 endfunction
 
+"-------------------------------------------------------------------------------
+" vim-rails
+"
+" example projections: https://gist.github.com/henrik/5676109
+"-------------------------------------------------------------------------------
+
+nmap <F4> :A<CR>
+nmap <Leader><F4> :AV<CR>
+
+let g:rails_projections = {
+\   'app/admin/*.rb': {
+\     'alternate': 'spec/controllers/admin/{}_controller_spec.rb'
+\   },
+\   'spec/controllers/admin/*_controller_spec.rb': {
+\     'alternate': 'app/admin/{}.rb'
+\   },
+\ }
+
+
+"-------------------------------------------------------------------------------
+" syntastic
+"-------------------------------------------------------------------------------
+
+let g:syntastic_ruby_mri_exec = 'ruby2.2.2'
+
 "-----------------------------------------------------------------------------
 " options
 "-----------------------------------------------------------------------------
@@ -130,7 +155,7 @@ set directory=$HOME
 " russian language fix
 set langmap=ё`,йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,фa,ыs,вd,аf,пg,рh,оj,лk,дl,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,Ё~,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>
 " one word symbol class
-set iskeyword=@,48-57,_,192-255,\$
+set iskeyword=@,48-57,_,192-255,\$,\-
 " encodings
 set fileencodings=utf-8,windows-1251,iso-8859-15,koi8-r
 " fileformat
@@ -344,6 +369,8 @@ vmap <s-k6> E
 nmap <s-k6> E
 map <s-k8> <pageup>
 map <s-k2> <pagedown>
+" set ctrl+c to behave like esc
+inoremap <c-c> <esc>
 " insert newline after current line
 nmap <silent> <cr> o<Esc>
 " insert newline before current line
@@ -369,8 +396,7 @@ vmap <silent># <esc>:call VisualSearch('?')<cr>?<c-R>/<cr>
 " Trailing Spaces
 nmap <silent>,t :call RemoveTrailingSpaces()<cr>:echo 'trailing spaces have been removed'<cr>
 
-let g:speckySpecSwitcherKey="<f12>"
-nmap gs <c-w><c-v><c-w>l<f12>
+nmap gs :AV<cr><c-w><c-r>
 " Git
 nnoremap <f5> :Gcommit<cr>
 inoremap <f5> <c-O>:Gcommit<cr>
@@ -460,7 +486,6 @@ au BufNewFile,BufRead *.slim set filetype=slim
 au BufNewFile,BufRead *.json set filetype=json
 
 "au BufNewFile,BufRead *.rb set makeprg=ruby\ -c\ %
-au BufRead,BufNewFile *_spec.rb set filetype=rspec
 au BufNewFile,BufRead *.ass,*.ssa set filetype=ssa
 "-----------------------------------------------------------------------------
 " omni completion
