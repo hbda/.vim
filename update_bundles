@@ -17,7 +17,6 @@ git_bundles = %w[
   scrooloose/nerdtree
   scrooloose/syntastic
   slim-template/vim-slim
-  sstephenson/eco
   tpope/vim-endwise
   tpope/vim-fugitive
   tpope/vim-haml
@@ -28,7 +27,7 @@ git_bundles = %w[
   vim-scripts/grep.vim
   sjbach/lusty
   rking/ag.vim
-  kshenoy/vim-signature
+  tpope/vim-eunuch
 ]
 #vim-scripts/vimgrep.vim
 #majutsushi/tagbar
@@ -44,6 +43,8 @@ git_bundles = %w[
 #tsaleh/vim-supertab
 #tsaleh/vim-tcomment
 #jrhorn424/vim-multiple-cursors
+#sstephenson/eco
+#kshenoy/vim-signature
 
 # https://langui.sh/2014/03/10/wunused-command-line-argument-hard-error-in-future-is-a-harsh-mistress
 %x{export ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"}
