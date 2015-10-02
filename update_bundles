@@ -27,8 +27,8 @@ git_bundles = %w[
   vim-scripts/grep.vim
   sjbach/lusty
   rking/ag.vim
-  tpope/vim-eunuch
 ]
+#tpope/vim-eunuch
 #vim-scripts/vimgrep.vim
 #majutsushi/tagbar
 #gregsexton/gitv
