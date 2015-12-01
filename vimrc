@@ -94,19 +94,12 @@ silent! unmap <leader>lj
 map <silent> <leader>n :NERDTreeToggle<cr>
 map <silent> <leader>N :NERDTreeFind<cr>
 nmap <f2> :NERDTreeFind<cr>
+nmap <f3> :NERDTreeToggle<cr>
 
 "-----------------------------------------------------------------------------
-"  Buffergator
+" NerdCommenter
 "-----------------------------------------------------------------------------
-let g:buffergator_suppress_keymaps = 1
-nnoremap <silent> <Leader>b :BuffergatorOpen<CR>
-nnoremap <silent> <Leader>B :BuffergatorClose<CR>
-"nnoremap <silent> <Leader>t :BuffergatorTabsOpen<CR>
-"nnoremap <silent> <Leader>T :BuffergatorTabsClose<CR>
-nmap <f3> :BuffergatorToggle<cr>
-
-nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
-nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
+let NERDSpaceDelims = 1
 
 "-----------------------------------------------------------------------------
 " Ag
@@ -140,8 +133,15 @@ let g:rails_projections = {
 \     'alternate': 'app/admin/{}.rb'
 \   },
 \ }
+
 "-----------------------------------------------------------------------------
-" options
+" editing
+"-----------------------------------------------------------------------------
+set cpoptions+=$
+set colorcolumn=81
+
+"-----------------------------------------------------------------------------
+" other options
 "-----------------------------------------------------------------------------
 set nocompatible
 set backup
@@ -234,7 +234,6 @@ set cursorline
 "set showmode
 set noshowmode
 set noerrorbells
-set cpoptions+=$
 "set nocp " option for cppomnicomplete
 set list
 set listchars=tab:>·,trail:·,precedes:#,extends:#,nbsp:·

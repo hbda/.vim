@@ -11,7 +11,6 @@ git_bundles = %w[
   briancollins/vim-jst
   cakebaker/scss-syntax.vim
   elzr/vim-json
-  jeetsukumaran/vim-buffergator
   kchmck/vim-coffee-script
   scrooloose/nerdcommenter
   scrooloose/nerdtree
@@ -73,6 +72,7 @@ puts "compiling command-t..."
 
 environment = 'ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"'
 command_t_path = File.join 'Command-T/ruby/command-t'
-rvm_init_script = 'source $HOME/.zshrc && rvm use system'
+rvm_init_script = 'source $HOME/.zshrc && rvm use ruby-2.0.0-p645'
 command_t_build_script = 'bundle && ruby extconf.rb && make'
+# command_t_build_script = 'bundle && make clean && ruby extconf.rb && make'
 puts %x{zsh -c 'cd #{command_t_path} && #{rvm_init_script} && #{environment} #{command_t_build_script}'}
