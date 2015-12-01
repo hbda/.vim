@@ -194,16 +194,25 @@ syntax on
 set t_Co=256
 colors ir_black_morr
 "colors sebocean
+
 if has("mac")
   "set guifont=Source\ Code\ Pro:h14
   "set guifont=Monaco:h14
   " download Monaco for Powerline.otf from https://gist.github.com/baopham/1838072
-  set guifont=Monaco\ for\ Powerline:h14
+  " set guifont=Monaco\ for\ Powerline:h14
+  " set linespace=0
+
+  set linespace=2
+  set guifont=Input\ Mono\ Condensed:h14
+  " set guifont=Input\ Mono\ Narrow:h14
+
 elseif has("gui_gtk2")
   set guifont=Monaco\ for\ Powerline\ 12
+
 else
   set guifont=Monaco:h10
 endif
+
 " strings numeration
 set number " always show line numbers
 set guioptions-=T
