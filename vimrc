@@ -170,7 +170,7 @@ set copyindent    " copy the previous indentation on autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
                   "    shiftwidth, not tabstop
 set nojoinspaces
-set smartindent
+" set smartindent
 set expandtab
 set shiftwidth=2  " number of spaces to use for autoindenting
 
