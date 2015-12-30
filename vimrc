@@ -203,8 +203,8 @@ if has("mac")
   " set linespace=0
 
   set linespace=2
-  set guifont=Input\ Mono\ Condensed:h14
-  " set guifont=Input\ Mono\ Narrow:h14
+  " set guifont=Input\ Mono\ Condensed:h14
+  set guifont=Input\ Mono\ Narrow:h14
 
 elseif has("gui_gtk2")
   set guifont=Monaco\ for\ Powerline\ 12
@@ -282,6 +282,8 @@ set guioptions-=m
 "-----------------------------------------------------------------------------
 " hotkeys
 "-----------------------------------------------------------------------------
+let mapleader=","
+
 vmap < <gv
 vmap > >gv
 
@@ -401,7 +403,7 @@ imap <silent><a-S-right> <c-O>:tabmove +1<cr>
 vmap <silent>* <esc>:call VisualSearch('/')<cr>/<c-R>/<cr>
 vmap <silent># <esc>:call VisualSearch('?')<cr>?<c-R>/<cr>
 " Trailing Spaces
-nmap <silent>,t :call RemoveTrailingSpaces()<cr>:echo 'trailing spaces have been removed'<cr>
+nmap <silent>.t :call RemoveTrailingSpaces()<cr>:echo 'trailing spaces have been removed'<cr>
 
 nmap gs <c-w><c-v><c-w>l:A<cr>
 " Git
