@@ -143,6 +143,7 @@ set colorcolumn=81
 "-----------------------------------------------------------------------------
 " other options
 "-----------------------------------------------------------------------------
+set shell=/bin/bash\ --norc
 set nocompatible
 set backup
 set nowrap
@@ -207,7 +208,10 @@ if has("mac")
   set guifont=Input\ Mono\ Narrow:h14
 
 elseif has("gui_gtk2")
-  set guifont=Monaco\ for\ Powerline\ 12
+  " set guifont=Monaco\ for\ Powerline\ 12
+
+  set linespace=2
+  set guifont=Input\ Mono\ Narrow\ 12
 
 else
   set guifont=Monaco:h10
