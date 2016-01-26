@@ -28,6 +28,9 @@ git_bundles = %w[
   rking/ag.vim
   tpope/vim-eunuch
   maksimr/vim-jsbeautify
+  pangloss/vim-javascript
+  mxw/vim-jsx
+  ngmy/vim-rubocop
 ]
 #vim-scripts/vimgrep.vim
 #majutsushi/tagbar

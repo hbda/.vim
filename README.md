@@ -25,7 +25,7 @@ rvm install ruby-2.0
 
 Clone this repo into your home directory either as .vim (linux) or vimfiles (windows).
 
-Then cd into the repo and run this to get all plugins installed: 
+Then cd into the repo and run this to get all plugins installed:
 `./update_bundles`
 
 
