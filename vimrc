@@ -399,10 +399,24 @@ nmap <c-q> :q!<cr>
 vmap <c-q> <esc>:q!<cr>i
 imap <c-q> <esc>:q!<cr>i
 
+" Tabs
 nmap <silent><a-S-left> :tabmove -1<cr>
 imap <silent><a-S-left> <c-O>:tabmove -1<cr>
 nmap <silent><a-S-right> :tabmove +1<cr>
 imap <silent><a-S-right> <c-O>:tabmove +1<cr>
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tt  :tabedit<Space>
+nnoremap tm  :tabm<Space>
+nnoremap td  :tabclose<CR>
+nnoremap tn  :tabnew<CR>
+nnoremap H gT
+nnoremap L gt
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+
 " search selected text
 vmap <silent>* <esc>:call VisualSearch('/')<cr>/<c-R>/<cr>
 vmap <silent># <esc>:call VisualSearch('?')<cr>?<c-R>/<cr>
