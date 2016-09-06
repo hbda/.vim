@@ -3,8 +3,7 @@ require 'fileutils'
 require 'open-uri'
 
 git_bundles = %w[
-  wincent/Command-T
-  keithbsmiley/rspec.vim
+  altercation/vim-colors-solarized
   ap/vim-css-color
   bkad/CamelCaseMotion
   bling/vim-airline
@@ -12,27 +11,29 @@ git_bundles = %w[
   cakebaker/scss-syntax.vim
   elzr/vim-json
   kchmck/vim-coffee-script
+  keithbsmiley/rspec.vim
+  maksimr/vim-jsbeautify
+  mxw/vim-jsx
+  nanotech/jellybeans.vim
+  ngmy/vim-rubocop
+  pangloss/vim-javascript
+  rking/ag.vim
   scrooloose/nerdcommenter
   scrooloose/nerdtree
   scrooloose/syntastic
   slim-template/vim-slim
   tpope/vim-endwise
+  tpope/vim-eunuch
   tpope/vim-fugitive
   tpope/vim-haml
   tpope/vim-rails
   tpope/vim-surround
-  tpope/vim-unimpaired
   vim-ruby/vim-ruby
-  vim-scripts/grep.vim
-  sjbach/lusty
-  rking/ag.vim
-  tpope/vim-eunuch
-  maksimr/vim-jsbeautify
-  pangloss/vim-javascript
-  mxw/vim-jsx
-  ngmy/vim-rubocop
-  nanotech/jellybeans.vim
+  wincent/Command-T
 ]
+# sjbach/lusty
+# vim-scripts/grep.vim
+# tpope/vim-unimpaired
 #vim-scripts/vimgrep.vim
 #majutsushi/tagbar
 #gregsexton/gitv

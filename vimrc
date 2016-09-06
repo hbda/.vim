@@ -134,6 +134,12 @@ let g:rails_projections = {
 \   'spec/controllers/admin/*_controller_spec.rb': {
 \     'alternate': 'app/admin/{}.rb'
 \   },
+\   'lib/*.rb': {
+\     'alternate': 'spec/{}_spec.rb'
+\   },
+\   'spec/*_spec.rb': {
+\     'alternate': 'lib/{}.rb'
+\   },
 \ }
 
 "-----------------------------------------------------------------------------
@@ -193,10 +199,14 @@ set smartcase     " ignore case if search pattern is all lowercase,
 set smarttab      " insert tabs on the start of a line according to
 set noswapfile
 " gui
-syntax on
+" syntax on
 set t_Co=256
-colors ir_black_morr
-"colors sebocean
+syntax enable
+set background=dark
+colors solarized
+" colors jellybeans
+" colors ir_black_morr
+" colors sebocean
 
 if has("mac")
   "set guifont=Source\ Code\ Pro:h14
