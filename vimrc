@@ -219,7 +219,7 @@ if has("mac")
   " set guifont=Input\ Mono\ Condensed:h14
   set guifont=Input\ Mono\ Narrow:h14
 
-elseif has("gui_gtk2")
+elseif has("gui_gtk")
   " set guifont=Monaco\ for\ Powerline\ 12
 
   set linespace=2
