@@ -102,6 +102,7 @@ nmap <f3> :NERDTreeToggle<cr>
 " NerdCommenter
 "-----------------------------------------------------------------------------
 let NERDSpaceDelims = 1
+map ,<space> <plug>NERDCommenterToggle
 
 "-----------------------------------------------------------------------------
 " Ag
@@ -465,8 +466,6 @@ imap <%= <%= %><left><left><left>
 
 " 'Control + \' - Open a new tab and tag into the function/variable currently under cursor
 map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<cr>
-" NERDCommenter
-map ,<space> <plug>NERDCommenterToggle
 
 " Toggle main menu
 nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
@@ -648,3 +647,8 @@ set completeopt+=longest
 " used to make vim default 'man' viewer
 " see http://vim.wikia.com/wiki/Using_vim_as_a_man-page_viewer_under_Unix
 let $PAGER=''
+
+"-----------------------------------------------------------------------------
+" indent Line
+"-----------------------------------------------------------------------------
+" let g:indentLine_setColors = 0
