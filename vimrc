@@ -651,4 +651,5 @@ let $PAGER=''
 "-----------------------------------------------------------------------------
 " indent Line
 "-----------------------------------------------------------------------------
-" let g:indentLine_setColors = 0
+let g:indentLine_enabled = 0
+map <S-F2> :IndentLinesToggle<CR>
