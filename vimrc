@@ -101,7 +101,8 @@ nmap <f3> :NERDTreeToggle<cr>
 "-----------------------------------------------------------------------------
 " NerdCommenter
 "-----------------------------------------------------------------------------
-let NERDSpaceDelims = 1
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
 map ,<space> <plug>NERDCommenterToggle
 
 "-----------------------------------------------------------------------------
