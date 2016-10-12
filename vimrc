@@ -126,7 +126,10 @@ endfunction
 " example projections: https://gist.github.com/henrik/5676109
 "-------------------------------------------------------------------------------
 
+
+set splitright
 nmap <F4> :A<CR>
+nmap gs :AV<CR>
 nmap <Leader><F4> :AV<CR>
 
 let g:rails_projections = {
@@ -438,7 +441,6 @@ vmap <silent># <esc>:call VisualSearch('?')<cr>?<c-R>/<cr>
 " Trailing Spaces
 nmap <silent><f1> :call RemoveTrailingSpaces()<cr>:echo 'trailing spaces have been removed'<cr>
 
-nmap gs <c-w><c-v><c-w>l:A<cr>
 " Git
 nnoremap <f5> :Gcommit<cr>
 inoremap <f5> <c-O>:Gcommit<cr>
