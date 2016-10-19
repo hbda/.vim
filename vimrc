@@ -1,4 +1,4 @@
-let mapleader=","
+let mapleader="\<Space>"
 
 "-----------------------------------------------------------------------------
 " pathogen
@@ -367,6 +367,7 @@ imap <c-l> <right>
 cmap <c-l> <right>
 " ESC button
 imap jj <Esc><right>
+imap fd <Esc><right>
 " arrows
 nmap <down> gj
 nmap <up> gk
