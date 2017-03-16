@@ -117,7 +117,7 @@ function! AgSearch()
   let l:search_phrase=input('Ag ')
   redraw
   echo "Ack Searching..."
-  silent execute ':Ag --ignore-dir={'.g:ag_search_ignore.'} '.l:search_phrase
+  silent execute ':LAg --ignore-dir={'.g:ag_search_ignore.'} '.l:search_phrase
 endfunction
 
 "-------------------------------------------------------------------------------
