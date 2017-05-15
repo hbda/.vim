@@ -143,9 +143,9 @@ let g:rails_projections = {
 \     'alternate': 'app/admin/{}.rb'
 \   },
 \   'lib/*.rb': {
-\     'alternate': 'spec/{}_spec.rb'
+\     'alternate': 'spec/lib/{}_spec.rb'
 \   },
-\   'spec/*_spec.rb': {
+\   'spec/lib/*_spec.rb': {
 \     'alternate': 'lib/{}.rb'
 \   },
 \ }
@@ -154,7 +154,7 @@ let g:rails_projections = {
 " editing
 "-----------------------------------------------------------------------------
 set cpoptions+=$
-set colorcolumn=81
+set colorcolumn=81,121
 
 "-----------------------------------------------------------------------------
 " other options
