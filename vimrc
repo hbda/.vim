@@ -57,14 +57,27 @@ set laststatus=2
 "-----------------------------------------------------------------------------
 " Command-T
 "-----------------------------------------------------------------------------
-let g:CommandTMatchWindowReverse = 0
-let g:CommandTMaxHeight = 17
-let g:CommandTMaxFiles = 25000
-let g:CommandTWildIgnore = &wildignore."*.o,*.obj,.git,.svn,*.log,public/uploads/**,public/system/**,public/images/**,tmp/cache/**,public/assets/**,tmp/sass-cache/**,tmp/pages/**,tmp/cache/**,test/pages/**,spec/pages/**"
+" let g:CommandTMatchWindowReverse = 0
+" let g:CommandTMaxHeight = 17
+" let g:CommandTMaxFiles = 25000
+" let g:CommandTWildIgnore = &wildignore."*.o,*.obj,.git,.svn,*.log,public/uploads/**,public/system/**,public/images/**,tmp/cache/**,public/assets/**,tmp/sass-cache/**,tmp/pages/**,tmp/cache/**,test/pages/**,spec/pages/**"
 
-nmap <silent> <leader>t :CommandT<cr>
-nmap <silent> <leader>r :CommandTFlush<cr>:CommandT<cr>
-nmap <silent> <leader>j :CommandTJump<CR>
+" nmap <silent> <leader>t :CommandT<cr>
+" nmap <silent> <leader>r :CommandTFlush<cr>:CommandT<cr>
+" nmap <silent> <leader>j :CommandTJump<CR>
+
+"-----------------------------------------------------------------------------
+" Ctrl-P
+"-----------------------------------------------------------------------------
+nmap <silent> <leader>t :CtrlP<cr>
+
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 " nmap <f1> :CommandT<cr>
 " nmap ,<f1>r :CommandTFlush<cr>:CommandT<cr>
@@ -108,7 +121,7 @@ map ,<space> <plug>NERDCommenterToggle
 "-----------------------------------------------------------------------------
 " Ag
 "-----------------------------------------------------------------------------
-let g:ag_search_ignore = 'log,public,tmp,spec/vcr_cassettes,vendor/'
+let g:ag_search_ignore = 'log,public,tmp,spec/vcr_cassettes'
 let g:ag_prg="ag --nogroup --nocolor --column "
 let g:ag_qhandler="copen 12"
 map <Leader>/ <esc>:call AgSearch()<cr>
