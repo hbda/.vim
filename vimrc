@@ -76,7 +76,12 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+  let g:ctrlp_clear_cache_on_exit = 1
+  let g:ctrlp_show_hidden = 1
+  let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
+  let g:ctrlp_max_files = 0
+  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 endif
 
 " nmap <f1> :CommandT<cr>
