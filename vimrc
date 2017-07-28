@@ -69,7 +69,7 @@ set laststatus=2
 "-----------------------------------------------------------------------------
 " Ctrl-P
 "-----------------------------------------------------------------------------
-nmap <silent> <leader>t :CtrlP<cr>
+nmap <silent> <leader>t :CtrlPMixed<cr>
 
 if executable('ag')
   " Use Ag over Grep
