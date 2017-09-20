@@ -26,14 +26,14 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 "-----------------------------------------------------------------------------
 " syntastic
 "-----------------------------------------------------------------------------
-"let g:syntastic_ruby_checkers=['mri'] ", 'rubylint', 'rubocop'
-"let g:syntastic_ruby_mri_args='-T1 -c'
+" let g:syntastic_ruby_checkers=['mri', 'rubylint', 'rubocop']
+" let g:syntastic_ruby_mri_args='-T1 -c'
 let g:syntastic_coffee_checkers=['coffee'] ", 'coffeelint'
 let g:syntastic_slim_checkers=['slimrb']
 let g:syntastic_json_checkers=['jsonlint'] " npm install -g jsonlint
 let g:syntastic_sass_checkers=[]
 let g:vim_json_syntax_conceal = 0
-let g:syntastic_ruby_mri_exec = 'ruby2.2.2'
+" let g:syntastic_ruby_mri_exec = 'ruby2.2.2'
 let g:syntastic_ruby_mri_quiet_messages = {
 \ 'regex': [
 \   '\m`&'' interpreted as argument prefix',
@@ -42,6 +42,15 @@ let g:syntastic_ruby_mri_quiet_messages = {
 "\   '\m^shadowing outer local variable',
 "let g:syntastic_enable_signs=1
 "let g:syntastic_auto_loc_list=1
+
+nnoremap <silent> <leader>ru :SyntasticCheck ruby rubocop<CR>
+nnoremap <silent> <leader>ra :!rubocop --auto-correct %<CR>
+
+
+"-----------------------------------------------------------------------------
+" Rubocop vim
+"-----------------------------------------------------------------------------
+let g:vimrubocop_keymap = 0
 
 "-----------------------------------------------------------------------------
 " matchit
