@@ -44,7 +44,7 @@ let g:syntastic_ruby_mri_quiet_messages = {
 "let g:syntastic_auto_loc_list=1
 
 nnoremap <silent> <leader>ru :SyntasticCheck ruby rubocop<CR>
-nnoremap <silent> <leader>ra :!rubocop --auto-correct %<CR>
+nnoremap <silent> <leader>ra :!bundle exec rubocop --auto-correct %<CR>
 
 
 "-----------------------------------------------------------------------------
