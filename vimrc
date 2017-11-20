@@ -66,10 +66,10 @@ set laststatus=2
 "-----------------------------------------------------------------------------
 " Command-T
 "-----------------------------------------------------------------------------
-let g:CommandTFileScanner = 'find'
+let g:CommandTFileScanner = 'git'
 let g:CommandTMatchWindowReverse = 0
 let g:CommandTMaxHeight = 17
-let g:CommandTMaxFiles = 55000
+let g:CommandTMaxFiles = 300000
 let g:CommandTWildIgnore = &wildignore."*.o,*.obj,.git,.svn,*.log,public/uploads/**,public/system/**,public/images/**,tmp/cache/**,public/assets/**,tmp/sass-cache/**,tmp/pages/**,tmp/cache/**,test/pages/**,spec/pages/**"
 
 nmap <silent> <leader>t :CommandT<cr>
