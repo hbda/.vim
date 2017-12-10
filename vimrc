@@ -1,12 +1,47 @@
 let mapleader="\<Space>"
 
 "-----------------------------------------------------------------------------
-" pathogen
+" Vim-plug
 "-----------------------------------------------------------------------------
-filetype off
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
-filetype on
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'altercation/vim-colors-solarized'
+Plug 'ap/vim-css-color'
+Plug 'bkad/CamelCaseMotion'
+Plug 'bling/vim-airline'
+Plug 'briancollins/vim-jst'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'elzr/vim-json'
+Plug 'kchmck/vim-coffee-script'
+Plug 'keithbsmiley/rspec.vim'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'mxw/vim-jsx'
+Plug 'nanotech/jellybeans.vim'
+Plug 'ngmy/vim-rubocop'
+Plug 'pangloss/vim-javascript'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'slim-template/vim-slim'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'vim-ruby/vim-ruby'
+Plug 'Yggdroot/indentLine'
+Plug 'wincent/command-t', {
+  \   'do': 'cd ruby/command-t/ext/command-t && RBENV_VERSION=system ruby extconf.rb && make'
+  \ }
+Plug 'airblade/vim-gitgutter'
+call plug#end()
 
 "-----------------------------------------------------------------------------
 " fugitive
