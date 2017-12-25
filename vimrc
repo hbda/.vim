@@ -41,6 +41,8 @@ Plug 'wincent/command-t', {
   \   'do': 'cd ruby/command-t/ext/command-t && RBENV_VERSION=system ruby extconf.rb && make'
   \ }
 Plug 'airblade/vim-gitgutter'
+Plug 'henrik/vim-indexed-search'
+Plug 'mhinz/vim-hugefile'
 call plug#end()
 
 "-----------------------------------------------------------------------------
