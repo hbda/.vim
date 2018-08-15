@@ -11,7 +11,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'bkad/CamelCaseMotion'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'briancollins/vim-jst'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'elzr/vim-json'
