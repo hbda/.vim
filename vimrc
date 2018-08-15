@@ -43,6 +43,7 @@ Plug 'wincent/command-t', {
 Plug 'airblade/vim-gitgutter'
 Plug 'henrik/vim-indexed-search'
 Plug 'mhinz/vim-hugefile'
+Plug 'posva/vim-vue'
 call plug#end()
 
 "-----------------------------------------------------------------------------
