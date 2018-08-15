@@ -44,6 +44,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'henrik/vim-indexed-search'
 Plug 'mhinz/vim-hugefile'
 Plug 'posva/vim-vue'
+Plug 'isRuslan/vim-es6'
+Plug 'SirVer/ultisnips'
 call plug#end()
 
 "-----------------------------------------------------------------------------
@@ -215,6 +217,11 @@ let g:rails_projections = {
 \     'alternate': 'lib/{}.rb'
 \   },
 \ }
+
+"-----------------------------------------------------------------------------
+" vim-vue
+"-----------------------------------------------------------------------------
+let g:vue_disable_pre_processors=1
 
 "-----------------------------------------------------------------------------
 " editing
