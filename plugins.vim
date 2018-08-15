@@ -8,6 +8,13 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+"-------------------------------------------------------------------------------
+" git
+"-------------------------------------------------------------------------------
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/gv.vim'
+
 Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'bkad/CamelCaseMotion'
@@ -30,7 +37,6 @@ Plug 'scrooloose/syntastic'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
@@ -39,7 +45,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'wincent/command-t', {
   \   'do': 'cd ruby/command-t/ext/command-t && RBENV_VERSION=system ruby extconf.rb && make'
   \ }
-Plug 'airblade/vim-gitgutter'
 Plug 'henrik/vim-indexed-search'
 Plug 'mhinz/vim-hugefile'
 Plug 'posva/vim-vue'
