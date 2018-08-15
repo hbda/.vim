@@ -334,7 +334,10 @@ set t_vb=
 set vb t_vb=
 " show unfinished commands in statusbar
 set showcmd
-set cursorline
+" highlight current line (might slow down navigation)
+" this is the main cause of sluggish scrolling!
+" set after colorscheme - or else it can be redefined inside it
+set nocursorline
 "norm \[i
 " display current mode
 "set showmode
