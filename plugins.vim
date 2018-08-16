@@ -473,3 +473,8 @@ endfunction
 " refresh lightline - or else it might become colorless after sourcing
 " vimrc (command was previously called in `augroup vimrc`)
 "call lightline#enable()
+
+"-----------------------------------------------------------------------------
+" vim-vue
+"-----------------------------------------------------------------------------
+let g:jsx_ext_required = 1
