@@ -15,21 +15,17 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
 
+
 Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'bkad/CamelCaseMotion'
 " Plug 'vim-airline/vim-airline'
 Plug 'itchyny/lightline.vim'
-Plug 'briancollins/vim-jst'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'elzr/vim-json'
-Plug 'kchmck/vim-coffee-script'
 Plug 'keithbsmiley/rspec.vim'
-Plug 'maksimr/vim-jsbeautify'
-Plug 'mxw/vim-jsx'
 Plug 'nanotech/jellybeans.vim'
 Plug 'ngmy/vim-rubocop'
-Plug 'pangloss/vim-javascript'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -47,9 +43,21 @@ Plug 'wincent/command-t', {
   \ }
 Plug 'henrik/vim-indexed-search'
 Plug 'mhinz/vim-hugefile'
+Plug 'SirVer/ultisnips'
+Plug 'ervandew/supertab'
+
+"-------------------------------------------------------------------------------
+" javascript
+"-------------------------------------------------------------------------------
+Plug 'briancollins/vim-jst'
+Plug 'kchmck/vim-coffee-script'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'isRuslan/vim-es6'
-Plug 'SirVer/ultisnips'
+Plug 'mxw/vim-jsx'
+
+
 call plug#end()
 
 "-----------------------------------------------------------------------------
