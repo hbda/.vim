@@ -83,7 +83,7 @@ if has("mac")
 
   set linespace=2
   " set guifont=Input\ Mono\ Condensed:h14
-  set guifont=Input\ Mono\ Narrow:h14
+  set guifont=Input\ Mono\ Narrow:h13
 
 elseif has("gui_gtk")
   " set guifont=Monaco\ for\ Powerline\ 12
