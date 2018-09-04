@@ -1,5 +1,5 @@
-set lines=54
-set columns=300
+set lines=999
+set columns=999
 " save
 nmap <c-s> :w<cr>
 vmap <c-s> <esc>:w<cr>gv
