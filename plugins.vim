@@ -53,6 +53,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'briancollins/vim-jst'
 Plug 'kchmck/vim-coffee-script'
 Plug 'maksimr/vim-jsbeautify'
+Plug 'digitaltoad/vim-pug'
 Plug 'posva/vim-vue'
 Plug 'mxw/vim-jsx'
 
