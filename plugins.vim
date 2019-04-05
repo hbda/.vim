@@ -19,7 +19,6 @@ Plug 'junegunn/gv.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'bkad/CamelCaseMotion'
-" Plug 'vim-airline/vim-airline'
 Plug 'itchyny/lightline.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'elzr/vim-json'
@@ -28,6 +27,8 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'ngmy/vim-rubocop'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
+" Plug 'tyru/caw.vim'
+" Plug 'Shougo/context_filetype.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'slim-template/vim-slim'
@@ -118,7 +119,7 @@ set laststatus=2
 "-----------------------------------------------------------------------------
 " Command-T
 "-----------------------------------------------------------------------------
-let g:CommandTFileScanner = 'git'
+let g:CommandTFileScanner = 'find'
 let g:CommandTMatchWindowReverse = 0
 let g:CommandTMaxHeight = 17
 let g:CommandTMaxFiles = 300000
