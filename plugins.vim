@@ -123,7 +123,7 @@ let g:CommandTFileScanner = 'find'
 let g:CommandTMatchWindowReverse = 0
 let g:CommandTMaxHeight = 17
 let g:CommandTMaxFiles = 300000
-let g:CommandTWildIgnore = &wildignore.",*.o,*.obj,.git,.svn,*.log,*/public/uploads,*/public/system,*/public/images,*/tmp/cache,*/public/assets,*/tmp/sass-cache,*/tmp/pages,*/tmp/cache,*/test/pages,*/spec/pages,*/node_modules/*"
+let g:CommandTWildIgnore = &wildignore.",*.o,*.obj,.git,.svn,*.log,*/public/uploads,*/public/system,*/public/images,*/tmp/cache,*/public/assets,*/tmp/sass-cache,*/tmp/pages,*/tmp/cache,*/tmp/themes,*/test/pages,*/spec/pages,*/node_modules/*"
 
 nmap <silent> <leader>t :CommandT<cr>
 nmap <silent> <leader>r :CommandTFlush<cr>:CommandT<cr>
