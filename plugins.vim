@@ -17,6 +17,7 @@ Plug 'junegunn/gv.vim'
 
 
 Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 Plug 'ap/vim-css-color'
 Plug 'bkad/CamelCaseMotion'
 Plug 'itchyny/lightline.vim'
