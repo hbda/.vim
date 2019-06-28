@@ -84,11 +84,10 @@ if has("mac")
   set linespace=2
   " set guifont=Input\ Mono\ Condensed:h14
   if system("osascript -e 'tell application \"Finder\" to get bounds of window of desktop' | cut -d ' ' -f 4") > 900
-    set guifont=Input\ Mono\ Narrow:h12
+    set guifont=Input:h12
   else
-    set guifont=Input\ Mono\ Narrow:h14
+    set guifont=Input:h14
   endif
-
 elseif has("gui_gtk")
   " set guifont=Monaco\ for\ Powerline\ 12
 
@@ -113,7 +112,6 @@ set nomodeline
 set scrolloff=3
 set sidescrolloff=7
 set sidescroll=1
-"set guifont=Courier\ New:h12:cRUSSIAN
 set confirm
 set shortmess=fimnrxoOtTI
 set ruler
