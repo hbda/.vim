@@ -26,9 +26,9 @@ Plug 'elzr/vim-json'
 Plug 'keithbsmiley/rspec.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'rking/ag.vim'
-Plug 'scrooloose/nerdcommenter'
-" Plug 'tyru/caw.vim'
-" Plug 'Shougo/context_filetype.vim'
+" Plug 'scrooloose/nerdcommenter'
+Plug 'tyru/caw.vim'
+Plug 'Shougo/context_filetype.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'slim-template/vim-slim'
@@ -178,9 +178,14 @@ nmap <f3> :NERDTreeToggle<cr>
 "-----------------------------------------------------------------------------
 " NerdCommenter
 "-----------------------------------------------------------------------------
-let g:NERDSpaceDelims = 1
-let g:NERDDefaultAlign = 'left'
-map ,<space> <plug>NERDCommenterToggle
+" let g:NERDSpaceDelims = 1
+" let g:NERDDefaultAlign = 'left'
+" map ,<space> <plug>NERDCommenterToggle
+
+"-----------------------------------------------------------------------------
+" CAW.vim
+"-----------------------------------------------------------------------------
+map ,<space> <plug>(caw:zeropos:toggle)
 
 "-----------------------------------------------------------------------------
 " Ag
