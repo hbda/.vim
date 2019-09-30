@@ -83,11 +83,11 @@ if has("mac")
 
   set linespace=2
   " set guifont=Input\ Mono\ Condensed:h14
-  if system("osascript -e 'tell application \"Finder\" to get bounds of window of desktop' | cut -d ' ' -f 4") > 900
-    set guifont=Input:h12
-  else
-    set guifont=Input:h14
-  endif
+  " if system("osascript -e 'tell application \"Finder\" to get bounds of window of desktop' | cut -d ' ' -f 4") > 900
+  set guifont=Input:h12
+  " else
+  "   set guifont=Input:h14
+  " endif
 elseif has("gui_gtk")
   " set guifont=Monaco\ for\ Powerline\ 12
 
