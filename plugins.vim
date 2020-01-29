@@ -40,7 +40,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'Yggdroot/indentLine'
 Plug 'wincent/command-t', {
-  \   'do': 'cd ruby/command-t/ext/command-t && RBENV_VERSION=system ruby extconf.rb && make'
+  \   'do': 'cd ruby/command-t/ext/command-t && RBENV_VERSION=2.6.5 ruby extconf.rb && make'
   \ }
 Plug 'henrik/vim-indexed-search'
 Plug 'mhinz/vim-hugefile'
