@@ -30,7 +30,9 @@ Plug 'rking/ag.vim'
 Plug 'tyru/caw.vim'
 Plug 'Shougo/context_filetype.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+" Plug 'vim-syntastic/syntastic'
+Plug 'maximbaz/lightline-ale' | Plug 'itchyny/lightline.vim'
+Plug 'w0rp/ale'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
@@ -79,27 +81,67 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 "-----------------------------------------------------------------------------
 " syntastic
 "-----------------------------------------------------------------------------
-" let g:syntastic_ruby_checkers=['mri', 'rubylint', 'rubocop']
-let g:syntastic_ruby_checkers=['mri', 'rubylint']
-" let g:syntastic_ruby_mri_args='-T1 -c'
-let g:syntastic_coffee_checkers=['coffee'] ", 'coffeelint'
-let g:syntastic_slim_checkers=['slimrb']
-let g:syntastic_json_checkers=['jsonlint'] " npm install -g jsonlint
-let g:syntastic_sass_checkers=[]
-let g:vim_json_syntax_conceal = 0
-" let g:syntastic_ruby_mri_exec = 'ruby2.2.2'
-let g:syntastic_ruby_mri_quiet_messages = {
-\ 'regex': [
-\   '\m`&'' interpreted as argument prefix',
-\   '\m`*'' interpreted as argument prefix'
-\ ] }
-"\   '\m^shadowing outer local variable',
-"let g:syntastic_enable_signs=1
-"let g:syntastic_auto_loc_list=1
+" " let g:syntastic_ruby_checkers=['mri', 'rubylint', 'rubocop']
+" let g:syntastic_ruby_checkers=['mri', 'rubylint']
+" " let g:syntastic_ruby_mri_args='-T1 -c'
+" let g:syntastic_coffee_checkers=['coffee'] ", 'coffeelint'
+" let g:syntastic_slim_checkers=['slimrb']
+" let g:syntastic_json_checkers=['jsonlint'] " npm install -g jsonlint
+" let g:syntastic_sass_checkers=[]
+" let g:vim_json_syntax_conceal = 0
+" " let g:syntastic_ruby_mri_exec = 'ruby2.2.2'
+" let g:syntastic_ruby_mri_quiet_messages = {
+"\ 'regex': [
+"\   '\m`&'' interpreted as argument prefix',
+"\   '\m`*'' interpreted as argument prefix'
+"\ ] }
+" "\   '\m^shadowing outer local variable',
+" "let g:syntastic_enable_signs=1
+" " let g:syntastic_auto_loc_list=1
+"
+" nnoremap <silent> <leader>ru :SyntasticCheck ruby rubocop<CR>
+" nnoremap <silent> <leader>ra :!bundle exec rubocop --auto-correct %<CR>
 
-nnoremap <silent> <leader>ru :SyntasticCheck ruby rubocop<CR>
-nnoremap <silent> <leader>ra :!bundle exec rubocop --auto-correct %<CR>
+"-----------------------------------------------------------------------------
+" ale
+"-----------------------------------------------------------------------------
+" only linters from g:ale_linters are enabled
+let g:ale_linters_explicit = 1
 
+" hi ALEWarningSign guibg=#FDE1FD guifg=#0512FB gui=bold
+" hi ALEErrorSign guibg=#F4DBDC guifg=#662529 gui=bold
+
+" location list is populated by default -
+" this might overwrite the contents of already
+" opened location list (e.g., search results)
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 0
+
+let g:ale_sign_warning = 'W>'
+let g:ale_sign_error = 'E>'
+
+" https://github.com/w0rp/ale/issues/505
+" to disable g:ale_lint_on_enter, it's necessary
+" to disable g:ale_lint_on_filetype_changed as well
+"let g:ale_lint_on_enter = 0
+let g:ale_lint_on_filetype_changed = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
+
+"\   'elixir': ['credo'],
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'vue': ['eslint'],
+\   'coffee': ['coffeelint'],
+\   'ruby': ['rubocop']
+\ }
+
+au BufNewFile,BufRead *.rb nnoremap <silent> ,R :w<cr>:silent !rubocop --auto-correct %<cr>:edit!<cr>
+au BufNewFile,BufRead *.js nnoremap <silent> ,R :w<cr>:silent !yarn run eslint --fix %<cr>:edit!<cr>
+au BufNewFile,BufRead *.jsx nnoremap <silent> ,R :w<cr>:silent !yarn run eslint --fix %<cr>:edit!<cr>
+au BufNewFile,BufRead *.vue nnoremap <silent> ,R :w<cr>:silent !yarn run eslint --fix %<cr>:edit!<cr>
 
 "-----------------------------------------------------------------------------
 " matchit
