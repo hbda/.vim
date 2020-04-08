@@ -25,7 +25,8 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'elzr/vim-json'
 Plug 'keithbsmiley/rspec.vim'
 Plug 'nanotech/jellybeans.vim'
-Plug 'rking/ag.vim'
+" Plug 'rking/ag.vim'
+Plug 'tap349/ack.vim'
 " Plug 'scrooloose/nerdcommenter'
 Plug 'tyru/caw.vim'
 Plug 'Shougo/context_filetype.vim'
@@ -232,16 +233,123 @@ map ,<space> <plug>(caw:hatpos:toggle)
 "-----------------------------------------------------------------------------
 " Ag
 "-----------------------------------------------------------------------------
-let g:ag_search_ignore = 'log,tmp,spec/vcr_cassettes'
-let g:ag_prg="ag --nogroup --nocolor --column "
-let g:ag_qhandler="copen 12"
-map <Leader>/ <esc>:call AgSearch()<cr>
+" let g:ag_search_ignore = 'log,tmp,spec/vcr_cassettes'
+" let g:ag_prg="ag --nogroup --nocolor --column "
+" let g:ag_qhandler="copen 12"
+" map <Leader>/ <esc>:call AgSearch()<cr>
+"
+" function! AgSearch()
+"   let l:search_phrase=input('Ag ')
+"   redraw
+"   echo "Ack Searching..."
+"   silent execute ':LAg --ignore-dir={'.g:ag_search_ignore.'} '.l:search_phrase
+" endfunction
 
-function! AgSearch()
-  let l:search_phrase=input('Ag ')
-  redraw
-  echo "Ack Searching..."
-  silent execute ':LAg --ignore-dir={'.g:ag_search_ignore.'} '.l:search_phrase
+"-------------------------------------------------------------------------------
+" ack.vim
+"-------------------------------------------------------------------------------
+
+let g:ackprg = 'rg --fixed-strings --smart-case --vimgrep'
+" disable empty search (searching the word under cursor) -
+" it complicates the logic to parse user input excessively
+"
+" use <C-r><C-w> to paste the word under cursor
+let g:ack_use_cword_for_empty_search = 0
+
+" QFEnter works with both quickfix windows and location lists
+map <Leader>/ :call <SID>Search()<CR>
+map <Leader>\ :call <SID>SearchWithGlob()<CR>
+
+function! s:Search()
+  echohl AckSearch
+  let l:input_phrase = input('⎸SEARCH > ')
+  echohl None
+
+  call <SID>MyLAck(l:input_phrase, '')
+endfunction
+
+function! s:SearchWithGlob()
+  echohl AckSearch
+  let l:input_phrase = input('⎸SEARCH [1/2] > ')
+  redraw!
+  let l:glob = input('⎸GLOB [2/2] > ')
+  echohl None
+
+  call <SID>MyLAck(l:input_phrase, l:glob)
+endfunction
+
+" `!` is not allowed in function name
+"
+" https://github.com/mileszs/ack.vim/issues/5
+" https://stackoverflow.com/a/15403852/3632318
+" https://stackoverflow.com/questions/5669194
+" :help escape()
+" :help shellescape()
+"
+" for rg to work we need:
+"
+" - not to escape `!` at all
+" - to escape `%#` twice
+" - to escape other special characters (slashes, etc.) once
+" - not to treat strings starting with dashes as rg options
+"
+" useful functions:
+"
+" - `shellescape({string})`:
+"   escapes all special characters once (excluding `!%#`)
+" - `shellescape({string}, 1)`:
+"   escapes all special characters once (including `!%#`)
+" - `escape({string}, {chars})`:
+"   escapes only the characters it's told to escape
+" - `--` (options delimiter):
+"   signifies the end of rg options
+"
+" => escape all special characters excluding `!%#` with
+"    `shellescape`, escape `%#` with `escape` twice
+"    and let `--` deal with strings starting with dashes
+function! s:MyLAck(input_phrase, ...)
+  let l:glob = get(a:, 1, '')
+  let l:glob_option = len(l:glob) ? '-g ''*' . l:glob . '*''' : ''
+
+  let l:delimiter = ' -- '
+  let l:split_args = split(a:input_phrase, l:delimiter)
+  let l:args_len = len(l:split_args)
+
+  " no arguments
+  if l:args_len == 0
+    call <SID>ShowWarningMessage('Empty search')
+    return
+  " options only (`-w -- `)
+  elseif l:args_len == 1 && a:input_phrase =~ l:delimiter . '$'
+    call <SID>ShowWarningMessage('Empty search')
+    return
+  " search phrase only (` -- foo` or `foo`)
+  elseif l:args_len == 1
+    let l:options = l:glob_option
+    let l:search_phrase = join(l:split_args)
+  " options and search phrase
+  else
+    let l:options = l:glob_option . ' ' . l:split_args[0]
+    let l:search_phrase = join(l:split_args[1:-1], l:delimiter)
+  endif
+
+  " ack.vim already escapes `|%#` once in autoload/ack.vim -
+  " escape `%#` once again here so that they're escaped twice
+  let l:escaped_search_phrase = escape(shellescape(l:search_phrase), '%#')
+
+  " don't use `silent` - it suppresses 'no match found' message
+  "
+  " search might break if ' -- ' is a substring of search phrase
+  " and user doesn't provide options - then part of search phrase
+  " is parsed as options which might yield unpredictable results
+  exec ':LAck! ' . l:options . l:delimiter . l:escaped_search_phrase
+endfunction
+
+function! s:ShowWarningMessage(message)
+  redraw!
+  echohl WarningMsg
+  echo a:message
+  echohl None
 endfunction
 
 "-------------------------------------------------------------------------------
