@@ -25,7 +25,6 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'elzr/vim-json'
 Plug 'keithbsmiley/rspec.vim'
 Plug 'nanotech/jellybeans.vim'
-" Plug 'rking/ag.vim'
 Plug 'tap349/ack.vim'
 " Plug 'scrooloose/nerdcommenter'
 Plug 'tyru/caw.vim'
@@ -229,21 +228,6 @@ nmap <f3> :NERDTreeToggle<cr>
 " CAW.vim
 "-----------------------------------------------------------------------------
 map ,<space> <plug>(caw:hatpos:toggle)
-
-"-----------------------------------------------------------------------------
-" Ag
-"-----------------------------------------------------------------------------
-" let g:ag_search_ignore = 'log,tmp,spec/vcr_cassettes'
-" let g:ag_prg="ag --nogroup --nocolor --column "
-" let g:ag_qhandler="copen 12"
-" map <Leader>/ <esc>:call AgSearch()<cr>
-"
-" function! AgSearch()
-"   let l:search_phrase=input('Ag ')
-"   redraw
-"   echo "Ack Searching..."
-"   silent execute ':LAg --ignore-dir={'.g:ag_search_ignore.'} '.l:search_phrase
-" endfunction
 
 "-------------------------------------------------------------------------------
 " ack.vim
