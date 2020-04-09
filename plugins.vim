@@ -26,6 +26,7 @@ Plug 'elzr/vim-json'
 Plug 'keithbsmiley/rspec.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'tap349/ack.vim'
+Plug 'tap349/QFEnter'
 " Plug 'scrooloose/nerdcommenter'
 Plug 'tyru/caw.vim'
 Plug 'Shougo/context_filetype.vim'
@@ -335,6 +336,24 @@ function! s:ShowWarningMessage(message)
   echo a:message
   echohl None
 endfunction
+
+"-------------------------------------------------------------------------------
+" QFEnter
+" QFEnter respects `switchbuf` option! if selected file is opened
+" in another tab all mappings below just switch to that tab
+"-------------------------------------------------------------------------------
+
+" disable automatic opening of quickfix window (or location list)
+" when opening file from current quickfix window in a new tab
+let g:qfenter_enable_autoquickfix = 0
+
+let g:qfenter_keymap = {}
+let g:qfenter_keymap.open = ['<C-CR>']
+let g:qfenter_keymap.open_keep = ['<S-CR>']
+let g:qfenter_keymap.open_close = ['<CR>']
+let g:qfenter_keymap.hopen = ['<C-s>']
+let g:qfenter_keymap.vopen = ['<C-v>']
+let g:qfenter_keymap.topen = ['<C-t>']"
 
 "-------------------------------------------------------------------------------
 " vim-rails
