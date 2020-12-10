@@ -44,7 +44,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'Yggdroot/indentLine'
 Plug 'wincent/command-t', {
-  \   'do': 'cd ruby/command-t/ext/command-t && make clean && /usr/local/opt/ruby/bin/ruby extconf.rb && make'
+  \   'do': 'cd ruby/command-t/ext/command-t && /usr/local/opt/ruby/bin/ruby extconf.rb && make'
   \ }
 Plug 'henrik/vim-indexed-search'
 Plug 'mhinz/vim-hugefile'
