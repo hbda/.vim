@@ -93,8 +93,9 @@ if has("mac")
 elseif has("gui_gtk")
   " set guifont=Monaco\ for\ Powerline\ 12
 
-  set linespace=2
-  set guifont=Input\ Mono\ Narrow\ 13
+  set linespace=1
+  set guifont=JetBrains\ Mono\ 11
+  " set guifont=Input\ Mono\ Narrow\ 13
 
 else
   set guifont=Monaco:h10
