@@ -43,9 +43,10 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'Yggdroot/indentLine'
-Plug 'wincent/command-t', {
-  \   'do': 'cd ruby/command-t/ext/command-t && /usr/local/opt/ruby/bin/ruby extconf.rb && make'
-  \ }
+" Plug 'wincent/command-t', {
+"  \   'do': 'cd ruby/command-t/ext/command-t && /opt/homebrew/opt/ruby/bin/ruby extconf.rb && make'
+"  \ }
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'henrik/vim-indexed-search'
 Plug 'mhinz/vim-hugefile'
 Plug 'SirVer/ultisnips'
@@ -159,45 +160,45 @@ set laststatus=2
 "-----------------------------------------------------------------------------
 " Command-T
 "-----------------------------------------------------------------------------
-let g:CommandTFileScanner = 'find'
-let g:CommandTMatchWindowReverse = 0
-let g:CommandTMaxHeight = 17
-let g:CommandTMaxFiles = 300000
-let g:CommandTWildIgnore = &wildignore.",*.o,*.obj,.git,.svn,*.log,*/public/uploads,*/public/system,*/public/images,*/tmp/cache,*/public/assets,*/tmp/sass-cache,*/tmp/pages,*/tmp/cache,*/tmp/themes,*/test/pages,*/spec/pages,*/node_modules/*"
-
-nmap <silent> <leader>t :CommandT<cr>
-nmap <silent> <leader>r :CommandTFlush<cr>:CommandT<cr>
-nmap <silent> <leader>j :CommandTJump<CR>
+" let g:CommandTFileScanner = 'find'
+" let g:CommandTMatchWindowReverse = 0
+" let g:CommandTMaxHeight = 17
+" let g:CommandTMaxFiles = 300000
+" let g:CommandTWildIgnore = &wildignore.",*.o,*.obj,.git,.svn,*.log,*/public/uploads,*/public/system,*/public/images,*/tmp/cache,*/public/assets,*/tmp/sass-cache,*/tmp/pages,*/tmp/cache,*/tmp/themes,*/test/pages,*/spec/pages,*/node_modules/*"
+" 
+" nmap <silent> <leader>t :CommandT<cr>
+" nmap <silent> <leader>r :CommandTFlush<cr>:CommandT<cr>
+" nmap <silent> <leader>j :CommandTJump<CR>
 
 "-----------------------------------------------------------------------------
 " Ctrl-P
 "-----------------------------------------------------------------------------
-" nmap <silent> <leader>t :CtrlPMixed<cr>
+nmap <silent> <leader>t :CtrlPMixed<cr>
 
-" if executable('ag')
-"   " Use Ag over Grep
-"   set grepprg=ag\ --nogroup\ --nocolor
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
 
-"   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-"   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-"   let g:ctrlp_clear_cache_on_exit = 1
-"   let g:ctrlp_show_hidden = 1
-"   let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
-"   let g:ctrlp_max_files = 0
-"   set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
-" endif
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+  let g:ctrlp_clear_cache_on_exit = 1
+  let g:ctrlp_show_hidden = 1
+  let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
+  let g:ctrlp_max_files = 0
+  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+endif
 
-" nmap <f1> :CommandT<cr>
-" nmap ,<f1>r :CommandTFlush<cr>:CommandT<cr>
+nmap <f1> :CommandT<cr>
+nmap ,<f1>r :CommandTFlush<cr>:CommandT<cr>
 
 " буферы закрываем всегда
-"function! s:set_bufhidden()
-  "if empty(&buftype)
-    "setlocal bufhidden=wipe
-  "endif
-"endfunction
+function! s:set_bufhidden()
+  if empty(&buftype)
+    setlocal bufhidden=wipe
+  endif
+endfunction
 
-"autocmd! BufRead * call s:set_bufhidden()
+autocmd! BufRead * call s:set_bufhidden()
 
 "-----------------------------------------------------------------------------
 " LustyExplorer
