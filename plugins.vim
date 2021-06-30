@@ -63,7 +63,10 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'digitaltoad/vim-pug'
 Plug 'posva/vim-vue'
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
+" Plug 'MaxMEllon/vim-jsx-pretty'
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'amadeus/vim-jsx'
 
 
 call plug#end()
@@ -139,6 +142,7 @@ let g:ale_lint_on_enter = 0
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'vue': ['eslint'],
+\   'jsx': ['eslint'],
 \   'coffee': ['coffeelint'],
 \   'ruby': ['rubocop']
 \ }
