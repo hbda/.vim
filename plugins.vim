@@ -58,15 +58,15 @@ Plug 'ervandew/supertab'
 " javascript
 "-------------------------------------------------------------------------------
 Plug 'pangloss/vim-javascript'
-Plug 'briancollins/vim-jst'
+" Plug 'briancollins/vim-jst'
 Plug 'kchmck/vim-coffee-script'
-Plug 'maksimr/vim-jsbeautify'
+" Plug 'maksimr/vim-jsbeautify'
 Plug 'digitaltoad/vim-pug'
 Plug 'posva/vim-vue'
 " Plug 'mxw/vim-jsx'
-" Plug 'MaxMEllon/vim-jsx-pretty'
-" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'amadeus/vim-jsx'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+" Plug 'amadeus/vim-jsx'
 
 
 call plug#end()
