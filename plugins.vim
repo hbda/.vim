@@ -42,7 +42,7 @@ Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
-Plug 'Yggdroot/indentLine'
+Plug 'nathanaelkane/vim-indent-guides'
 " Plug 'wincent/command-t', {
 "  \   'do': 'cd ruby/command-t/ext/command-t && /opt/homebrew/opt/ruby/bin/ruby extconf.rb && make'
 "  \ }
@@ -646,3 +646,9 @@ endfunction
 " vim-vue
 "-----------------------------------------------------------------------------
 let g:jsx_ext_required = 1
+
+"-----------------------------------------------------------------------------
+" vim-indent-guides
+"-----------------------------------------------------------------------------
+let g:indent_guides_enable_on_vim_startup = 0
+map <S-F2> :IndentGuidesToggle<CR>
