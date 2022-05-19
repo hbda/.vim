@@ -512,9 +512,9 @@ function! MyLightlineFugitive()
   if <SID>IsNarrowWindow() | return '' | end
   if <SID>IsPluginWindow() | return '' | end
 
-  if !exists('*fugitive#head') | return '' | end
+  if !exists('*FugitiveHead') | return '' | end
 
-  let l:branch = fugitive#head()
+  let l:branch = FugitiveHead()
   let l:fname = expand('%')
 
   if strwidth(l:branch . l:fname) > 0.6 * winwidth(0)
