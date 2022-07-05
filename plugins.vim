@@ -15,9 +15,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
 
-
-Plug 'altercation/vim-colors-solarized'
-Plug 'morhetz/gruvbox'
 Plug 'ap/vim-css-color'
 Plug 'bkad/CamelCaseMotion'
 Plug 'itchyny/lightline.vim'
@@ -25,7 +22,6 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'elzr/vim-json'
 Plug 'pedrohdz/vim-yaml-folds'
 Plug 'keithbsmiley/rspec.vim'
-Plug 'nanotech/jellybeans.vim'
 Plug 'tap349/ack.vim'
 Plug 'tap349/QFEnter'
 " Plug 'scrooloose/nerdcommenter'
@@ -53,6 +49,23 @@ Plug 'henrik/vim-indexed-search'
 Plug 'mhinz/vim-hugefile'
 Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
+
+"-------------------------------------------------------------------------------
+" Colorschemes
+"-------------------------------------------------------------------------------
+Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
+Plug 'sainnhe/everforest'
+Plug 'sainnhe/sonokai'
+Plug 'nanotech/jellybeans.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'joshdick/onedark.vim'
+Plug 'kaicataldo/material.vim'
+Plug 'tomasr/molokai'
+Plug 'sonph/onehalf'
+Plug 'w0ng/vim-hybrid'
+Plug 'ayu-theme/ayu-vim'
 
 "-------------------------------------------------------------------------------
 " javascript
