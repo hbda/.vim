@@ -94,7 +94,7 @@ elseif has("gui_gtk")
   " set guifont=Monaco\ for\ Powerline\ 12
 
   set linespace=1
-  set guifont=JetBrains\ Mono\ 11
+  set guifont=JetBrains\ Mono\ 10
   " set guifont=Input\ Mono\ Narrow\ 13
 
 else
