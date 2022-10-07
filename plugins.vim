@@ -320,7 +320,7 @@ endfunction
 "    and let `--` deal with strings starting with dashes
 function! s:MyLAck(input_phrase, ...)
   let l:glob = get(a:, 1, '')
-  let l:glob_option = len(l:glob) ? '-g ''*' . l:glob . '*''' : ''
+  let l:glob_option = len(l:glob) ? '-g ''*' . l:glob . '*''' : '-g ''!bower_components/'''
 
   let l:delimiter = ' -- '
   let l:split_args = split(a:input_phrase, l:delimiter)
