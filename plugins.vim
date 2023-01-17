@@ -30,7 +30,7 @@ Plug 'Shougo/context_filetype.vim'
 Plug 'scrooloose/nerdtree'
 " Plug 'vim-syntastic/syntastic'
 Plug 'maximbaz/lightline-ale' | Plug 'itchyny/lightline.vim'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
@@ -150,6 +150,10 @@ let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 1
+
+" Пока отключаю virtual text, т.к. при наличии нескольких ошибок в одной
+" строке возникают глюки
+let g:ale_virtualtext_cursor = 'disabled'
 
 "\   'elixir': ['credo'],
 let g:ale_linters = {
