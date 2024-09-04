@@ -8,12 +8,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-"-------------------------------------------------------------------------------
-" git
-"-------------------------------------------------------------------------------
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/gv.vim'
 
 Plug 'ap/vim-css-color'
 Plug 'bkad/CamelCaseMotion'
@@ -49,6 +43,15 @@ Plug 'henrik/vim-indexed-search'
 Plug 'mhinz/vim-hugefile'
 Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
+" Plug 'madox2/vim-ai'
+Plug 'Exafunction/codeium.vim'
+
+"-------------------------------------------------------------------------------
+" git
+"-------------------------------------------------------------------------------
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/gv.vim'
 
 "-------------------------------------------------------------------------------
 " Colorschemes
