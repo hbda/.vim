@@ -156,7 +156,7 @@ let g:ale_lint_on_enter = 1
 
 " Пока отключаю virtual text, т.к. при наличии нескольких ошибок в одной
 " строке возникают глюки
-let g:ale_virtualtext_cursor = 'disabled'
+let g:ale_virtualtext_cursor = 'current'
 
 "\   'elixir': ['credo'],
 let g:ale_linters = {
@@ -672,3 +672,9 @@ let g:jsx_ext_required = 1
 "-----------------------------------------------------------------------------
 let g:indent_guides_enable_on_vim_startup = 0
 map <S-F2> :IndentGuidesToggle<CR>
+
+"-----------------------------------------------------------------------------
+" codeium.vim
+"-----------------------------------------------------------------------------
+let g:codeium_no_map_tab = 1
+imap <script><silent><nowait><expr> <C-g> codeium#Accept()
