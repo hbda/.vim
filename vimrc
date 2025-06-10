@@ -57,7 +57,7 @@ set incsearch
 set hlsearch
 set showmatch
 " clipboard
-"set clipboard=unnamedplus
+set clipboard+=unnamedplus
 "set noignorecase
 set ignorecase    " ignore case when searching
 set smartcase     " ignore case if search pattern is all lowercase,
@@ -200,6 +200,31 @@ cmap <s-insert>   <c-r>+
 exe 'inoremap <script> <C-V>' paste#paste_cmd['i']
 exe 'vnoremap <script> <C-V>' paste#paste_cmd['v']
 
+if exists('g:neovide')
+  " Сохранение файла (<Super>-s)
+  nmap <D-s> :w<CR>
+
+  " Копирование в системный буфер (+ регистр) (<Super>-c)
+  vmap <D-c> "+y
+
+  " Вставка в нормальный режим (<Super>-v)
+  nmap <D-v> "+P
+
+  " Вставка в визуальный режим (<Super>-v)
+  xmap <D-v> "+P
+
+  " Вставка в командный режим (<Super>-v)
+  cmap <D-v> <C-R>+
+
+  " Вставка в режим вставки (<Super>-v)
+  imap <D-v> <Esc>l"+Pli
+
+  nnoremap <D-v> "+p
+  snoremap <D-v> <C-R>+
+  tnoremap <D-v> <C-R>+
+  xnoremap <D-v> <C-R>+
+endif
+
 "imap <s-insert> <c-v>
 "vmap <s-insert> <c-v>
 
@@ -283,6 +308,10 @@ imap <s-tab> <c-n>
 nmap <c-q> :q!<cr>
 vmap <c-q> <esc>:q!<cr>i
 imap <c-q> <esc>:q!<cr>i
+
+if has('nvim')
+  let g:python3_host_prog = expand('~/.config/nvim/venv/bin/python')
+endif
 
 " Tabs
 nmap <silent><a-S-left> :tabmove -1<cr>

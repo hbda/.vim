@@ -26,6 +26,31 @@ source ~/vimfiles/vimrc
 source ~/vimfiles/gvimrc
 ```
 
+### For Neovide (or another neovim)
+Documentation https://neovim.io/doc/user/nvim.html#nvim-from-vim
+Follow the previous steps. After that:
+```bash
+mkdir ~/.config/nvim
+touch ~/.config/nvim/init.vim
+```
+Add these contents to the file:
+```
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
+```
+#### Enable python provider
+Base on https://peterbabic.dev/blog/install-pynvim-via-homebrew-properly/
+Install pynvim:
+```bash
+mkdir -p ~/.config/nvim/venv
+/opt/homebrew/bin/python3 -m venv ~/.config/nvim/venv
+source ~/.config/nvim/venv/bin/activate
+pip install pynvim
+
+# Leave virtual environment
+deactivate
+```
 
 Open vim and run `PlugInstall` command.
 
