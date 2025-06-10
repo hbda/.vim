@@ -26,7 +26,8 @@ source ~/vimfiles/vimrc
 source ~/vimfiles/gvimrc
 ```
 
-### For Neovide (or another neovim)
+## For Neovide (or another neovim)
+
 Documentation https://neovim.io/doc/user/nvim.html#nvim-from-vim
 Follow the previous steps. After that:
 ```bash
@@ -39,7 +40,8 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 ```
-#### Enable python provider
+
+### Enable python provider
 Base on https://peterbabic.dev/blog/install-pynvim-via-homebrew-properly/
 Install pynvim:
 ```bash
