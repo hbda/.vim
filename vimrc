@@ -69,7 +69,7 @@ set noswapfile
 set t_Co=256
 syntax enable
 set background=dark
-colors hybrid
+colors gruvbox-material
 " colors jellybeans
 " colors ir_black_morr
 " colors sebocean
