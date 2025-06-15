@@ -57,7 +57,7 @@ set incsearch
 set hlsearch
 set showmatch
 " clipboard
-set clipboard+=unnamedplus
+" set clipboard+=unnamedplus
 "set noignorecase
 set ignorecase    " ignore case when searching
 set smartcase     " ignore case if search pattern is all lowercase,
@@ -217,9 +217,10 @@ if exists('g:neovide')
   cmap <D-v> <C-R>+
 
   " Вставка в режим вставки (<Super>-v)
-  imap <D-v> <Esc>l"+Pli
+  " imap <D-v> <Esc>"+Pi
+  imap <D-v> <space><esc>"+gP<del>i
 
-  nnoremap <D-v> "+p
+  nnoremap <D-v> "+P
   snoremap <D-v> <C-R>+
   tnoremap <D-v> <C-R>+
   xnoremap <D-v> <C-R>+
@@ -330,6 +331,9 @@ nnoremap H gT
 nnoremap L gt
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
+nnoremap <D-[> :tabprevious<CR>
+nnoremap <D-]> :tabnext<CR>
+nnoremap <D-w> :tabclose<CR>
 
 " search selected text
 vmap <silent>* <esc>:call VisualSearch('/')<cr>/<c-R>/<cr>
